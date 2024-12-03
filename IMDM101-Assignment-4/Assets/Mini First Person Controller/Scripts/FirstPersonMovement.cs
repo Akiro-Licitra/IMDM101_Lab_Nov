@@ -18,6 +18,9 @@ public class FirstPersonMovement : MonoBehaviour
     public AudioSource source;
     public AudioClip clip;
 
+    public GameObject player;
+    public Camera playerCamera;
+
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
@@ -72,6 +75,10 @@ public class FirstPersonMovement : MonoBehaviour
 
     private IEnumerator PlayAudioAndChangeScene(string sceneName)
     {
+
+        //player.SetActive(false);
+        //playerCamera.gameObject.SetActive(false);
+
         source.clip = clip;
         source.Play();
 

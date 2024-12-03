@@ -11,7 +11,6 @@ public class CrystalCounter : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
         }
         else
         {
