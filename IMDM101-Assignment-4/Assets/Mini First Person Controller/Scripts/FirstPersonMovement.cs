@@ -7,6 +7,7 @@ public class FirstPersonMovement : MonoBehaviour
 {
     public float speed = 5;
 
+    public GameObject gameover;
     [Header("Running")]
     public bool canRun = true;
     public bool IsRunning { get; private set; }
@@ -16,10 +17,17 @@ public class FirstPersonMovement : MonoBehaviour
     public static bool usedRed, usedPink, usedBlue;
     public static bool finished;
     public AudioSource source;
-    public AudioClip clip;
+    public AudioClip clip, clipTuah;
+    private bool alive;
 
     public GameObject player;
     public Camera playerCamera;
+
+    public GameObject dummyImage;
+    public GameObject tint;
+    public GameObject slendermen;
+
+
 
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
@@ -39,10 +47,17 @@ public class FirstPersonMovement : MonoBehaviour
         usedBlue = false;
         finished = false;
         source = GetComponent<AudioSource>();
+        gameover.SetActive(false);
+        dummyImage.SetActive(false);
+        alive = true;
     }
 
     void FixedUpdate()
     {
+        if (!alive)
+        {
+            return;
+        }
         // Update IsRunning from input.
         IsRunning = canRun && Input.GetKey(runningKey);
 
@@ -58,14 +73,28 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Apply movement.
         rigidbody.linearVelocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.linearVelocity.y, targetVelocity.y);
+
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ghost"))
         {
-            ChangeSceneWithAudio("LabScene");
+            dummyImage.SetActive(true);
+            ChangeSceneWithAudio("Interlude");
         }
+
+        if (other.gameObject.CompareTag("Slender"))
+            {
+            slendermen.SetActive(false);
+            gameover.SetActive(true);
+            dummyImage.SetActive(true);
+            tint.SetActive(false);   
+            alive = false;
+            source.clip = clipTuah;
+            source.Play();
+            }
+
     }
 
     public void ChangeSceneWithAudio(string sceneName)

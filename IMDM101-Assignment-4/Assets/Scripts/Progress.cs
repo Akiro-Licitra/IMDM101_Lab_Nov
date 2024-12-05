@@ -13,7 +13,7 @@ public class Progress : MonoBehaviour
     private float time, target;
     public AudioSource Source;
     public AudioClip bells, kidney, alien, thunder, car;
-    AudioClip[] clips = new AudioClip[5];
+    AudioClip[] clips = new AudioClip[4];
 
     void Awake()
     {
@@ -41,7 +41,7 @@ public class Progress : MonoBehaviour
         clips[1] = car;
         clips[2] = bells;
         clips[3] = kidney;
-        clips[4] = alien;
+ //       clips[4] = alien;
     }
 
     void Update()

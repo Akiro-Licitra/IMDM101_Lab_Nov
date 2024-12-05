@@ -21,6 +21,7 @@ public class Interactor : MonoBehaviour
     int count;
     float switchTimer;
     public bool done;
+    public GameObject doneScreen;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class Interactor : MonoBehaviour
         count = 0;
         switchTimer = 0;
         done = false;
+        doneScreen.SetActive(false);
     }
 
     void Update()
@@ -39,8 +41,8 @@ public class Interactor : MonoBehaviour
             switchTimer += Time.deltaTime;
             if(switchTimer > 3.0f)
             {
-                SceneManager.LoadScene("Cutscene");
- //               Debug.Log("change the scene");
+                doneScreen.SetActive(true);
+                SceneManager.LoadScene("FinalScene");
             }
         }
 
@@ -78,6 +80,17 @@ public class Interactor : MonoBehaviour
                     }
                     
                 }
+                else
+                {
+                    if (PickupText.activeSelf)
+                    {
+                        PickupText.SetActive(false);
+                    }
+                    if (DropoffText.activeSelf)
+                    {
+                        DropoffText.SetActive(false);
+                    }
+                }
             }
         }
         else
@@ -114,12 +127,4 @@ public class Interactor : MonoBehaviour
             }
         }
     }
-
-    //public void Alarm()
-    //{
-    //    done = true;
-    //    Source.clip = alarm;
-    //    Source.Play();
-    //}
-
 }

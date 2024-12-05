@@ -11,14 +11,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo Scene.unity
     guid: dc28cd2d14e4c4d4b8c1eab5d12d0699
-  - enabled: 0
-    path: Assets/Scenes/Laboratory Scene.unity
-    guid: 89c1fcf427dcc9c44ab3e29c18144cfc
+  - enabled: 1
+    path: Assets/Scenes/Interlude.unity
+    guid: 9a1a55b82f401084cb84e7a88c8ea611
   - enabled: 1
     path: Assets/Scenes/LabScene.unity
     guid: 402dc4d7fd0dd5f46837552b771c1cf9
   - enabled: 1
     path: Assets/Scenes/Cutscene.unity
     guid: b8ecbf205c599c2459a044c830599c6b
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 9f24c66864b71e14bb23623ee9f7b018
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -6,7 +6,6 @@ public class FirstPersonLook : MonoBehaviour
     Transform character;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
-
     Vector2 velocity;
     Vector2 frameVelocity;
 
